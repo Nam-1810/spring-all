@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.sysMenuMapper">
+	<!-- no need loop resultSet -->
+	<resultMap type="sysMenuVO" id="sysMenuResult">
+	</resultMap>
+	<select id="selectMenuParent" resultMap="sysMenuResult" databaseId="mysql"> 
+		<![CDATA[
+			SELECT id, menu_name FROM sys_menu WHERE sys_menu.menu_parent IS NULL;
+		]]>
+	</select>
+	<select id="selectMenuChild" resultMap="sysMenuResult" databaseId="mysql">
+		<![CDATA[
+			SELECT menu_name,menu_url FROM sys_menu WHERE sys_menu.menu_parent = #{menu_parent}
+		]]>
+	</select>
+	<!-- <insert id="insert" parameterType="usrInfoVO">
+		<![CDATA[
+	        INSERT INTO usr_info (
+	        USERNAME, 
+	        PASSWORD, 
+	        LAST_NAME, 
+	        FIRST_NAME, 
+	        FULL_NAME, 
+	        EMAIL, 
+	        GENDER, 
+	        IS_LOCKED, 
+	        IS_DELETED, 
+	        CREATED_DATE, 
+	        CREATE_USER, 
+	        UPDATE_USER, 
+	        UPDATE_DATE ) VALUES (#{USERNAME},#{PASSWORD},#{LAST_NAME},#{FIRST_NAME},#{FULL_NAME},#{EMAIL},#{GENDER},#{IS_LOCKED},#{IS_DELETED},#{CREATED_DATE},#{CREATE_USER},#{UPDATE_USER});
+		]]>
+	</insert>
+	<update id="update" parameterType="usrInfoVO">
+		UPDATE usr_info SET
+		USERNAME = #{USERNAME}
+		WHERE usr_info.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from usr_info WHERE usr_info.id = #{id};
+	</delete> -->
+</mapper>
+

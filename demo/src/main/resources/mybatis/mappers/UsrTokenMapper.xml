@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.usrTokenMapper">
+	<!-- no need loop resultSet -->
+	<resultMap type="usrTokenVO" id="usrTokenResult">
+	</resultMap>
+	<select id="selectAll" resultMap="usrTokenResult"> 
+		<![CDATA[
+			SELECT * FROM usr_token
+		]]>
+	</select>
+	<select id="selectById" resultMap="usrTokenResult" parameterType="int">
+		<![CDATA[
+			select * from usr_token
+			where usr_token.id = #{id}
+		]]>
+	</select>
+	<select id="selectTokenByUsername" resultMap="usrTokenResult" parameterType="String">
+		<![CDATA[
+			select TOKEN from usr_token
+			where usr_token.USERNAME = #{USERNAME}
+		]]>
+	</select>
+	<insert id="insert" parameterType="usrTokenVO">
+		<![CDATA[
+	        INSERT INTO usr_token (
+	        USERNAME, 
+	        TOKEN, 
+	        EXPIRED_DATE, 
+	        CREATED_DAY, 
+	        CREATE_USER, 
+	        UPDATE_USER, 
+	        UPDATE_DATE ) 
+	        VALUES (#{USERNAME},#{TOKEN},#{EXPIRED_DATE},#{CREATED_DAY},#{CREATE_USER},#{UPDATE_USER},#{UPDATE_DATE});
+		]]>
+	</insert>
+	<update id="update" parameterType="usrTokenVO">
+		UPDATE usr_token SET
+		USERNAME = #{USERNAME}
+		WHERE usr_token.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from usr_token WHERE usr_token.id = #{id};
+	</delete>
+</mapper>
+

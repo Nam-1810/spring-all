@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.usrInfoMapper">
+	<!-- no need loop resultSet -->
+	<resultMap type="usrInfoVO" id="usrInfoResult">
+	</resultMap>
+	<select id="selectAll" resultMap="usrInfoResult" databaseId="mysql"> 
+		<![CDATA[
+			SELECT * FROM usr_info
+		]]>
+	</select>
+	<select id="selectById" resultMap="usrInfoResult" parameterType="int">
+		<![CDATA[
+			select * from usr_info
+			where usr_info.id = #{id}
+		]]>
+	</select>
+	<select id="selectByUserName" resultMap="usrInfoResult">
+		<![CDATA[
+			select * from usr_info
+			where usr_info.USERNAME = #{USERNAME}
+		]]>
+	</select>
+	<insert id="insert" parameterType="usrInfoVO">
+		<![CDATA[
+	        INSERT INTO usr_info (
+	        USERNAME, PASSWORD, LAST_NAME, FIRST_NAME, FULL_NAME, EMAIL )
+	        VALUES (#{USERNAME},#{PASSWORD}, #{LAST_NAME}, #{FIRST_NAME}, #{FULL_NAME}, #{EMAIL});
+		]]>
+	</insert>
+	<update id="update" parameterType="usrInfoVO">
+		UPDATE usr_info SET
+		USERNAME = #{USERNAME}
+		WHERE usr_info.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from usr_info WHERE usr_info.id = #{id};
+	</delete>
+</mapper>
+

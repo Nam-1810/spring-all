@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link th:href="@{css/bootstrap-v1.4/bootstrap.min.css}" rel="stylesheet">
+
+<link th:href="@{css/sign-in.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+	<form class="form-signin" th:action="@{/oauth_login}" method="post">
+		<img class="mb-4" th:src="@{images/logo.png}" alt="" width="300"
+			height="150">
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<label for="inputEmail" class="sr-only">Username</label> <input
+			type="text" class="form-control" name="username" id="username"
+			title="Please input must contain 8 or more characters, no numbers or special characters"
+			taria-describedby="emailHelp" placeholder="Enter username" required
+			autofocus="autofocus"> <label for="inputPassword"
+			class="sr-only">Password</label> <input type="password"
+			class="form-control" name="password" id="password"
+			title="Please input must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter"
+			placeholder="Enter password" required>
+			<!-- pattern="([A-Za-z0-9]).{6,}" pattern for username  -->
+			<!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" // pattern for password  -->
+		<div class="checkbox mb-3">
+			<label> <input type="checkbox" name="remember-me">
+				Remember me
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+			in</button>
+		<hr>
+		<a href="/register">Register</a>
+		<hr>
+		<h3>Login with:</h3>
+		<p th:each="url : ${urls}">
+			<a th:text="${url.key}" th:href="${url.value}">Client</a>
+		</p>
+		<p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+		<div class="message" th:if="${param.error}">Invalid username or
+			password.</div>
+		<div class="message" th:if="${param.logout}">You have been
+			logged out.</div>
+	</form>
+
+
+</body>
+</html>

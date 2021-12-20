@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.sysConfigMapper">
+	<!-- no need loop resultSet -->
+	<resultMap type="sysConfigVO" id="sysConfigResult">
+	</resultMap>
+	<select id="selectSysConfig" resultMap="sysConfigResult" databaseId="mysql"> 
+		<![CDATA[
+			SELECT * FROM sys_config WHERE sys_config.config_used = "Y"
+		]]>
+	</select>
+	<select id="selectByConfigKey" resultMap="sysConfigResult" databaseId="mysql">
+		<![CDATA[
+			SELECT config_name FROM sys_config WHERE sys_config.config_key = #{config_key}
+		]]>
+	</select>
+	
+	<delete id="deleteById" parameterType="int">
+		DELETE from sys_config WHERE sys_config.id = #{id};
+	</delete> 
+	<update id="updateById" parameterType="sysConfigVO">
+		UPDATE sys_config SET
+		config_key = #{config_key},
+		config_value = #{config_value},
+		def_val = #{def_val},
+		typ_var = #{typ_var},
+		config_used = #{config_used},
+		created_date = #{created_date},
+		created_user = #{created_user},
+		update_date = #{update_date},
+		updated_user = #{updated_user}
+		WHERE sys_config.id = #{id};
+	</update>
+    <insert id="insert" parameterType="sysConfigVO">
+		<![CDATA[
+	        INSERT INTO sys_config (
+	        config_key, 
+	        config_value, 
+	        def_val, 
+	        typ_var, 
+	        config_used, 
+	        created_date, 
+	        created_user, 
+	        update_date, 
+	        updated_user) VALUES (#{config_key},#{config_value},#{def_val},#{typ_var},#{config_used},#{created_date},#{created_user},#{update_date},#{updated_user});
+		]]>
+	</insert>
+	<!-- <update id="update" parameterType="usrInfoVO">
+		UPDATE usr_info SET
+		USERNAME = #{USERNAME}
+		WHERE usr_info.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from usr_info WHERE usr_info.id = #{id};
+	</delete> -->
+</mapper>
+

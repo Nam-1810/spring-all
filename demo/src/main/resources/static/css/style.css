@@ -1,0 +1,65 @@
+body
+{
+   background-color: #f5f5f5;
+}
+
+.container
+{
+   
+}
+.outside
+{
+    width: 700px;
+    height: 500px;
+    background-color: white;
+    margin: 120px auto;
+    display: flex;
+}
+.form-login
+{
+    width: 70%;
+    height: 80%;
+    background-color: white;
+    margin: auto;
+}
+.form-login .title
+{
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 30px;
+    
+} 
+.form-login .title h1
+{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+}
+.form-login .forgot-password a
+{
+   font-family: 'Open Sans', sans-serif;
+   float: right;
+}
+.form-login button
+{
+    margin-top: 10px;
+    width: 60%;
+    height: 55px;
+    font-size: 17px;
+}
+.form-login button:hover
+{
+   color: white;
+   background-color: teal;
+   border: none;
+  
+}
+.form-login .form-control
+{
+    height: 50px;
+    border-radius: 0px;
+}
+.message
+{
+	color: red;
+	margin-bottom: 10px;
+}
