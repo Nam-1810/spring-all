@@ -10,19 +10,19 @@ import com.github.javafaker.Faker;
 @Controller
 public class hobbitSay {
 
-	Faker faker;
-
-	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
-
-	@RequestMapping("/send_messager")
-	public String generate() {
-
-		faker = Faker.instance();
-
-		kafkaTemplate.send("hobbit","hobit" + faker.random().nextInt(42), faker.hobbit().quote());
-
-		return "redirect:/home";
-	}
+	
+	  Faker faker;
+	  
+	  @Autowired private KafkaTemplate<String, String> kafkaTemplate;
+	  
+	  @RequestMapping("/send_messager") public String generate() {
+	  
+	  faker = Faker.instance();
+	 
+	  kafkaTemplate.send("hobbit","hobit" + faker.random().nextInt(42),
+	  faker.hobbit().quote());
+	 
+	  return "redirect:/home"; }
+	 
 
 }

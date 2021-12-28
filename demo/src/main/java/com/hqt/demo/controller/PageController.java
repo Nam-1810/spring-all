@@ -114,6 +114,7 @@ public class PageController {
 		return "dashboard";
 	}
 	
+	
 	private boolean isAuthenticated() {
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    if (authentication == null || AnonymousAuthenticationToken.class.

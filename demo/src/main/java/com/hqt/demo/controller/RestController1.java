@@ -28,8 +28,9 @@ import com.hqt.demo.util.JwtUtil;
 
 public class RestController1 {
 	
-	@Autowired
-	StreamsBuilderFactoryBean factoryBean;
+	
+    @Autowired StreamsBuilderFactoryBean factoryBean;
+	 
 	
 	@Autowired
 	UsrInfoService usrInfoService;
@@ -62,15 +63,16 @@ public class RestController1 {
 		
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 		return new AuthenticatioanResponse(jwt);
-	}
-	
-	
-
-    @GetMapping("/count/{word}")
-    public Long getCount(@PathVariable String word){
-        final KafkaStreams kafkaStreams =  factoryBean.getKafkaStreams();
-        final ReadOnlyKeyValueStore<String, Long> counts = kafkaStreams.store(StoreQueryParameters.fromNameAndType("counts", QueryableStoreTypes.keyValueStore()));
-        return counts.get(word);
-    }
-
 }
+	
+
+
+  @GetMapping("/count/{word}") public Long getCount(@PathVariable String word){
+  final KafkaStreams kafkaStreams = factoryBean.getKafkaStreams(); final
+  ReadOnlyKeyValueStore<String, Long> counts =
+  kafkaStreams.store(StoreQueryParameters.fromNameAndType("counts",
+  QueryableStoreTypes.keyValueStore())); return counts.get(word); 
+  
+  }
+  
+  }
