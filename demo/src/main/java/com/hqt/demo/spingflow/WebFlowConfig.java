@@ -19,16 +19,15 @@ import org.thymeleaf.spring5.webflow.view.AjaxThymeleafViewResolver;
 import org.thymeleaf.spring5.webflow.view.FlowAjaxThymeleafView;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-
-
 @Configuration
 public class WebFlowConfig extends AbstractFlowConfiguration {
 	
 	@Bean
 	public FlowDefinitionRegistry flowRegistry() {
 		return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-				.addFlowLocation("/flow/**/*_flow.xml", "activationFlow")
-				.setFlowBuilderServices(this.flowBuilderServices()) //
+				.setBasePath("classpath:") //
+				.addFlowLocation("flows/start/demo-flow.xml", "activationFlow") //
+				.setFlowBuilderServices(this.flowBuilderServices())
 				.build();
 	}
 
@@ -42,7 +41,6 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 	public FlowBuilderServices flowBuilderServices() {
 		return getFlowBuilderServicesBuilder()
 				.setViewFactoryCreator(this.mvcViewFactoryCreator())
-				.setDevelopmentMode(true)
 				.build();
 	}
 	
