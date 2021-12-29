@@ -1,15 +1,39 @@
 package com.hqt.demo.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UsrInfo {
+import javax.validation.constraints.NotBlank;
+
+
+
+public class UsrInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	private Integer ID;
+	
+	@NotBlank
 	private String USERNAME;
+	
+	@NotBlank
 	private String PASSWORD;
+	
+	@NotBlank
 	private String LAST_NAME;
+	
+	@NotBlank
 	private String FIRST_NAME;
+	
+	@NotBlank
 	private String FULL_NAME;
+	
+	@NotBlank
 	private String EMAIL;
+	
 	private Integer GENDER;
 	private Integer IS_LOCKED;
 	private Integer IS_DELETED;

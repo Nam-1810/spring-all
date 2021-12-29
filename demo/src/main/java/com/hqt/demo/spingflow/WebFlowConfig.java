@@ -3,9 +3,11 @@ package com.hqt.demo.spingflow;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.webflow.config.AbstractFlowConfiguration;
 import org.springframework.webflow.definition.registry.FlowDefinitionRegistry;
@@ -22,11 +24,14 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Configuration
 public class WebFlowConfig extends AbstractFlowConfiguration {
 	
+	@Autowired
+	private LocalValidatorFactoryBean localValidatorFacotryBean;
+	
 	@Bean
 	public FlowDefinitionRegistry flowRegistry() {
 		return getFlowDefinitionRegistryBuilder(flowBuilderServices())
 				.setBasePath("classpath:") //
-				.addFlowLocation("flows/start/demo-flow.xml", "activationFlow") //
+				.addFlowLocation("flows/start/demo-flow.xml", "activationFlow")
 				.setFlowBuilderServices(this.flowBuilderServices())
 				.build();
 	}
@@ -41,9 +46,9 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 	public FlowBuilderServices flowBuilderServices() {
 		return getFlowBuilderServicesBuilder()
 				.setViewFactoryCreator(this.mvcViewFactoryCreator())
+				.setValidator(this.localValidatorFacotryBean)
 				.build();
 	}
-	
 	
 	@Bean
 	public FlowHandlerMapping flowHandlerMapping() {

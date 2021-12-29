@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link th:href="@{css/bootstrap-v1.4/bootstrap.min.css}" rel="stylesheet">
+</head>
+<div class="container">
+    <h1>Lazada</h1>
+	<form method="post">
+		<div class="form-group">
+			<label>Product</label> 
+			<input class="form-control" name="username" id="username" />
+		</div>
+		<div class="form-group">
+			<label>Quantily</label> 
+			<input type="text" class="form-control" name="lastName" id="lastName">
+		</div>
+		<div class="form-group">
+			<label>Price</label> 
+			<input type="text" class="form-control" name="firstName" id="firstName">
+		</div>
+		<div class="form-group">
+			<label>Email</label> 
+			<input type="text" class="form-control" name="email" id="email">
+		</div>
+
+		<button type="submit" class="btn btn-primary" name="_eventId_information">Previous</button>
+		<button type="submit" class="btn btn-primary" name="_eventId_fishnish">Next</button>
+	</form>
+</div>
+</body>
+</html>

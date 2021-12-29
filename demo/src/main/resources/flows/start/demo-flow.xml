@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+	<var name="personalInfo" class="com.hqt.demo.entities.UsrInfo" />
 
-    <view-state id="activation" view="flow/view/activation">
-        <transition on="activate" to="success"/>
-        <transition on="cancel" to="failure"/>
-    </view-state>
 
-    <view-state id="success" view="flow/view/success"/>
+	<view-state id="information" view="flow/view/information" model="personalInfo">
+		<transition on="shop" to="shopper" >
+		</transition>
+		<transition on="lazada" to="lazada">
+				
+		</transition>
+		<on-exit>
+				<evaluate expression="webFlowController.addPersonalInfo(personalInfo)" />
+		</on-exit>
+	</view-state>
 
-    <view-state id="failure" view="flow/view/failure"/>
+	<view-state id="shopper" view="flow/view/shopper">
+		<transition on="information" to="information" />
+		<transition on="fishnish" to="fishnish" />
+	</view-state>
+
+	<view-state id="lazada" view="flow/view/lazada">
+		<transition on="information" to="information" />
+		<transition on="fishnish" to="fishnish" />
+	</view-state>
+
+	<view-state id="fishnish" view="flow/view/fishnish">
+
+	</view-state>
 
 </flow>

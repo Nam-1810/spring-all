@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link th:href="@{css/bootstrap-v1.4/bootstrap.min.css}" rel="stylesheet">
+</head>
+<div class="container">
+    <h1>Register in Here</h1>
+	<form method="post" th:object="${personalInfo}" enctype="multipart/form-data">
+		<div class="form-group">
+			<label>User name</label> 
+			<input class="form-control" name="username" id="username" th:field="*{USERNAME}"/>
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('USERNAME')}" th:errors="*{USERNAME}"></small>
+		</div>
+		<div class="form-group">
+			<label>Password</label> 
+			<input type="password" class="form-control" name="password" id="password" th:field="*{PASSWORD}">
+		</div>
+		<div class="form-group">
+			<label>Last Name</label> 
+			<input type="text" class="form-control" name="lastName" id="lastName" th:field="*{LAST_NAME}">
+		</div>
+		<div class="form-group">
+			<label>First name</label> 
+			<input type="text" class="form-control" name="firstName" id="firstName" th:field="*{FIRST_NAME}">
+		</div>
+		<div class="form-group">
+			<label>Email</label> 
+			<input type="text" class="form-control" name="email" id="email"th:field="*{EMAIL}">
+		</div>
+
+		<button type="submit" class="btn btn-primary" name="_eventId_shop">Shopper</button>
+		<button type="submit" class="btn btn-primary" name="_eventId_lazada">Lazada</button>
+	</form>
+</div>
+</body>
+</html>
