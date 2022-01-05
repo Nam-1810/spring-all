@@ -5,31 +5,47 @@
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
 	<var name="personalInfo" class="com.hqt.demo.entities.UsrInfo" />
+	<var name="bill" class="com.hqt.demo.entities.Bill" />
 
+	<on-start>
+		<evaluate expression="registerHandler.init()"
+			result="flowScope.flowModel" />
+	</on-start>
 
 	<view-state id="information" view="flow/view/information" model="personalInfo">
-		<transition on="shop" to="shopper" >
+		<transition on="shop" to="validatePersonal" >
 		</transition>
-		<transition on="lazada" to="lazada">
-				
+		<transition on="lazada" to="lazada">		
 		</transition>
 		<on-exit>
-				<evaluate expression="webFlowController.addPersonalInfo(personalInfo)" />
+				<evaluate expression="registerHandler.addPersonalInfo(flowScope.flowModel, personalInfo)" />
 		</on-exit>
 	</view-state>
 
-	<view-state id="shopper" view="flow/view/shopper">
+	<action-state id="validatePersonal">
+		<evaluate expression="registerHandler.validatePersonalInfo(personalInfo, messageContext)" />
+		<transition on="success" to="shopper" />
+		<transition on="failure" to="information" />
+	</action-state>
+
+	<view-state id="shopper" view="flow/view/shopper" model="bill">
 		<transition on="information" to="information" />
 		<transition on="fishnish" to="fishnish" />
+		<on-exit>
+				<evaluate expression="registerHandler.addBill(flowScope.flowModel, bill)" />
+		</on-exit>
 	</view-state>
 
-	<view-state id="lazada" view="flow/view/lazada">
+	<view-state id="lazada" view="flow/view/lazada" model="bill">
 		<transition on="information" to="information" />
 		<transition on="fishnish" to="fishnish" />
+		<on-exit>
+				<evaluate expression="registerHandler.addBill(flowScope.flowModel, bill)" />
+		</on-exit>
 	</view-state>
 
-	<view-state id="fishnish" view="flow/view/fishnish">
-
+	<view-state id="fishnish" view="flow/view/fishnish" model="flowScope.flowModel">
+		<transition on="information" to="information" />
 	</view-state>
 
 </flow>

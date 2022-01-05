@@ -7,24 +7,20 @@
 </head>
 <div class="container">
     <h1>Lazada</h1>
-	<form method="post">
+	<form method="post" th:object="${bill}">
 		<div class="form-group">
 			<label>Product</label> 
-			<input class="form-control" name="username" id="username" />
+			<input class="form-control" name="product" id="product" th:field="*{PRODUCT}"/>
 		</div>
 		<div class="form-group">
 			<label>Quantily</label> 
-			<input type="text" class="form-control" name="lastName" id="lastName">
+			<input type="text" class="form-control" name="quantily" id="quantily" th:field="*{QUANTILY}">
 		</div>
 		<div class="form-group">
 			<label>Price</label> 
-			<input type="text" class="form-control" name="firstName" id="firstName">
+			<input type="text" class="form-control" name="price" id="price" th:field="*{PRICE}">
 		</div>
-		<div class="form-group">
-			<label>Email</label> 
-			<input type="text" class="form-control" name="email" id="email">
-		</div>
-
+		
 		<button type="submit" class="btn btn-primary" name="_eventId_information">Previous</button>
 		<button type="submit" class="btn btn-primary" name="_eventId_fishnish">Next</button>
 	</form>

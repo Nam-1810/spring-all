@@ -19,19 +19,14 @@ public class UsrInfo implements Serializable {
 	@NotBlank
 	private String USERNAME;
 	
-	@NotBlank
 	private String PASSWORD;
 	
-	@NotBlank
 	private String LAST_NAME;
 	
-	@NotBlank
 	private String FIRST_NAME;
 	
-	@NotBlank
 	private String FULL_NAME;
 	
-	@NotBlank
 	private String EMAIL;
 	
 	private Integer GENDER;

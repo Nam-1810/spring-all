@@ -16,18 +16,22 @@
 		<div class="form-group">
 			<label>Password</label> 
 			<input type="password" class="form-control" name="password" id="password" th:field="*{PASSWORD}">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('PASSWORD')}" th:errors="*{PASSWORD}"></small>
 		</div>
 		<div class="form-group">
 			<label>Last Name</label> 
 			<input type="text" class="form-control" name="lastName" id="lastName" th:field="*{LAST_NAME}">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('LAST_NAME')}" th:errors="*{LAST_NAME}"></small>
 		</div>
 		<div class="form-group">
 			<label>First name</label> 
 			<input type="text" class="form-control" name="firstName" id="firstName" th:field="*{FIRST_NAME}">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('FIRST_NAME')}" th:errors="*{FIRST_NAME}"></small>
 		</div>
 		<div class="form-group">
 			<label>Email</label> 
 			<input type="text" class="form-control" name="email" id="email"th:field="*{EMAIL}">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('EMAIL')}" th:errors="*{EMAIL}"></small>
 		</div>
 
 		<button type="submit" class="btn btn-primary" name="_eventId_shop">Shopper</button>

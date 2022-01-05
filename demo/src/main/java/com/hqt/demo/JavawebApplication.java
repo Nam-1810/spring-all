@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
 
 @SpringBootApplication
-@ImportResource(locations = {"classpath:repository-bean.xml"})
+@ImportResource(locations = {"classpath:repository-bean.xml", "classpath:WebFlowConfigXml.xml"})
 @ComponentScan(basePackages={"com.hqt.demo"})
 public class JavawebApplication {
 	

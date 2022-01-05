@@ -4,9 +4,37 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link th:href="@{css/bootstrap-v1.4/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-<h2>Activation Fail!</h2>
+	<div class="container">
+		<h1>Fishnish</h1>
+		<hr/>
+		<form method="post" th:object="${flowModel}">
+			<div class="row">
+				<div class="col">
+					<h2 style="color: red">Personal Info</h2>
+					<h4>Name:</h4>
+					<p th:text="${flowModel.usrInfo.USERNAME}"></p>
+					<h4>Full name</h4>
+					<p th:text="${flowModel.usrInfo.FIRST_NAME + flowModel.usrInfo.LAST_NAME}"></p>
+					<h4>Email:</h4>
+					<p th:text="${flowModel.usrInfo.EMAIL}"></p>
+				</div>
+				<div class="col">
+					<h2 style="color: red">Bill</h2>
+					<h4>Product:</h4>
+					<p th:text="${flowModel.bill.PRODUCT}"></p>
+					<h4>Quantily:</h4>
+					<p th:text="${flowModel.bill.QUANTILY}"></p>
+					<h4>Price:</h4>
+					<p th:text="${flowModel.bill.PRICE}"></p>
+					<h4>Total:</h4>
+					<p th:text="${flowModel.bill.PRICE * flowModel.bill.QUANTILY}"></p>
+				</div>
+				<button type="submit" class="btn btn-primary" name="_eventId_information">Back to information</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
