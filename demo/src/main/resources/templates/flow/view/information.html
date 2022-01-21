@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="https://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-<link th:href="@{css/bootstrap-v1.4/bootstrap.min.css}" rel="stylesheet">
+<head th:replace="~{/flow/view/head :: head}">
 </head>
-<div class="container">
+	<div th:insert="~{/flow/view/home :: footer}"></div>
+	<div class="container">
     <h1>Register in Here</h1>
 	<form method="post" th:object="${personalInfo}" enctype="multipart/form-data">
 		<div class="form-group">

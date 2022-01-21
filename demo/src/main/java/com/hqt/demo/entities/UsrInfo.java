@@ -3,17 +3,19 @@ package com.hqt.demo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 
-
+@Entity
 public class UsrInfo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Id
 	private Integer ID;
 	
 	@NotBlank

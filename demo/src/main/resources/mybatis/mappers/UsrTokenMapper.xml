@@ -14,7 +14,7 @@
 	<select id="selectById" resultMap="usrTokenResult" parameterType="int">
 		<![CDATA[
 			select * from usr_token
-			where usr_token.id = #{id}
+			where usr_token.ID = #{id}
 		]]>
 	</select>
 	<select id="selectTokenByUsername" resultMap="usrTokenResult" parameterType="String">

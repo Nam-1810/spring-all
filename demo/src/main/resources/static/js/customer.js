@@ -186,3 +186,9 @@ Ext.onReady(function() {
 		}]);
 
 });
+ function edit_show() {
+            document.getElementById('edit').style.display = "block";
+        }
+  function edit_hide() {
+            document.getElementById('edit').style.display = "none";
+  }

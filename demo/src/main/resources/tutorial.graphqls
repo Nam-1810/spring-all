@@ -1,0 +1,15 @@
+schema {
+	query : Query
+}
+
+type Query {
+	allUsrs: [UsrInfoMapper]
+	usrById(ID: Int) : UsrInfoMapper
+}
+
+type UsrInfoMapper {
+	ID: Int!
+	USERNAME: String
+	PASSWORD: String
+	EMAIL: String
+}

@@ -25,8 +25,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.hqt.demo.entities.sysMenuVO;
+import com.hqt.demo.entities.UsrInfo;
+import com.hqt.demo.entities.SysMenu;
 import com.hqt.demo.service.SysMenuService;
+import com.hqt.demo.service.UsrInfoService;
 
 @Controller
 public class PageController {
@@ -36,6 +38,9 @@ public class PageController {
 	@Autowired
 	SysMenuService sysMenuService;
 
+	@Autowired
+	UsrInfoService usr_infoService;
+	
 	@Lazy
 	@Autowired
 	private OAuth2AuthorizedClientService authorizedClientService;
@@ -88,11 +93,11 @@ public class PageController {
 	
 	@GetMapping(value = {"","/","/home"})
 	public String dashboard(Model model) {
-		List<sysMenuVO> listParent = sysMenuService.selectMenuParent();
-		Map<String, List<sysMenuVO>> map = new HashMap<String, List<sysMenuVO>>();
+		List<SysMenu> listParent = sysMenuService.selectMenuParent();
+		Map<String, List<SysMenu>> map = new HashMap<String, List<SysMenu>>();
 		for(int i = 0; i < listParent.size(); i++)
 		{
-			List<sysMenuVO> listChild = sysMenuService.selectMenuChild(listParent.get(i).getId());
+			List<SysMenu> listChild = sysMenuService.selectMenuChild(listParent.get(i).getId());
 			map.put(listParent.get(i).getMenu_name(), listChild);
 		}
 		model.addAttribute("mapMenu", map);
@@ -102,6 +107,14 @@ public class PageController {
 	@GetMapping("/sysConfig")
 	public String sysConfig() {
 		return "sysConfig";
+	}
+	
+	@GetMapping("/user")
+	public String user(Model model) {
+		List<UsrInfo> list = usr_infoService.findAll();
+		model.addAttribute("listUser", list);
+		model.addAttribute("usrInfo", new UsrInfo());
+		return "user";
 	}
 	
 	@GetMapping("/register")

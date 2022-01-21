@@ -1,0 +1,102 @@
+
+<div
+	class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1 class="h2">User</h1>
+	<div class="btn-toolbar mb-2 mb-md-0">
+		<div class="btn-group mr-2">
+			<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+			<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+		</div>
+		<button type="button"
+			class="btn btn-sm btn-outline-secondary dropdown-toggle">
+			<span data-feather="calendar"></span> This week
+		</button>
+	</div>
+</div>
+<div id="helloWorldPanel">
+	<div class="row">
+		<div class="col-xl-10 col-lg-10">
+			<div class="content">
+				<div class="row top">
+					<h3 class="col-xl-10 col-lg-10">User table</h3>
+					<!-- <a class="btn btn-success" href="#add" onclick="add_show()">Add
+						New Role</a> -->
+				</div>
+				<div class="table_style">
+					<table id="example" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Username</th>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="user,iter : ${listUser}">
+								<tr>
+									<td th:utext="${iter.index} + 1"></td>
+									<td style="display: none" th:utext="${user.ID}" id="id"></td>
+									<td th:utext="${user.USERNAME}"></td>
+									<td th:utext="${user.LAST_NAME}"></td>
+									<td th:utext="${user.FIRST_NAME}"></td>
+									<td th:utext="${user.EMAIL}"></td>
+									<td><a href="#" class="editUser" onclick="edit_show()">Edit</i></a></td>
+
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+				<div id="edit">
+					<form method="post" th:action="@{/usrInfo/update}" th:object="${usrInfo}">
+					    <a href="#" onclick="edit_hide()" style="position: absolute; right: 30px;">X</a> 
+					    	<div class="form-group">
+							<label>ID</label> <input th:field="*{ID}" class="form-control"
+								name="idd" id="idd" readonly="readonly" />
+						</div>
+						<div class="form-group">
+							<label>User name</label> <input th:field="*{USERNAME}" class="form-control"
+								name="username" id="username" readonly="readonly" />
+						</div>
+						<div class="form-group">
+							<label>Last Name</label> <input th:field="*{LAST_NAME}" type="text" class="form-control" 
+								name="lastName" id="lastName">
+						</div>
+						<div class="form-group">
+							<label>First name</label> <input th:field="*{FIRST_NAME}" type="text" class="form-control"
+								name="firstName" id="firstName">
+						</div>
+						<div class="form-group">
+							<label>Email</label> <input th:field="*{EMAIL}" type="text" class="form-control"
+								name="email" id="email">
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('table .editUser').on('click', function() {
+		var id = $(this).parent().parent().find('#id').html();		
+		$.ajax({
+			type : 'GET',
+			dataType : 'json',
+			url : "/usrInfo/" + id,
+			success : function(data) {
+				$("#idd").val(data.id);
+				$("#username").val(data.username);
+				$("#lastName").val(data.last_NAME);
+				$("#firstName").val(data.first_NAME);
+				$("#email").val(data.email);
+
+			}
+		});
+	});
+</script>
+
+
+

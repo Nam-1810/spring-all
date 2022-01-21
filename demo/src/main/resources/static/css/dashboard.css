@@ -104,3 +104,22 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+#edit {
+	position: absolute;
+	width: 95%;
+	height: 100%;
+	opacity: 100;
+	top: 0px;
+	display: none;
+}
+
+form {
+	position: relative;
+	min-width: 900px;
+	padding: 10px 50px;
+	border: 2px solid gray;
+	border-radius: 10px;
+	font-family: raleway;
+	background-color: #cef5ff;
+}
+

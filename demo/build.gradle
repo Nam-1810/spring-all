@@ -67,6 +67,16 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.10.RELEASE'
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java
+	implementation group: 'com.graphql-java', name: 'graphql-java', version: '16.2'
+	// https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter
+	implementation group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
+	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
+	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
+
+	
+	
+	
 	
     
     

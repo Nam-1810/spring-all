@@ -7,10 +7,15 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hqt.demo.entities.SysConfig;
 import com.hqt.demo.entities.UsrInfo;
 import com.hqt.demo.service.UsrInfoService;
 
@@ -26,6 +31,22 @@ public class UsrInfoController {
 	public List<UsrInfo> helloWorld(Model model) {
 		List<UsrInfo> list = usr_infoService.findAll();
 		return list;
+	}
+	
+	
+	@RequestMapping(value="/usrInfo/{id}",method = RequestMethod.GET)
+	@ResponseBody
+	public UsrInfo sysConfig(@PathVariable("id") Integer id) {
+		UsrInfo usrInfo = usr_infoService.selectById(id);
+		return usrInfo;
+	}
+	
+	@RequestMapping("/usrInfo/update")
+	public String updateUser(Model model,@ModelAttribute UsrInfo usrInfo) {
+		 usr_infoService.update(usrInfo);
+		 List<UsrInfo> list = usr_infoService.findAll();
+		 model.addAttribute("listUser", list);
+		 return "redirect:/home";
 	}
 	
 

@@ -66,7 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable()
 		.authorizeRequests()      
 		        .antMatchers("/anonymous*").anonymous()
-				.antMatchers("/oauth_login/*").permitAll().anyRequest().authenticated()
+				.antMatchers("/oauth_login/*","/graphql/**").permitAll().anyRequest().authenticated()
 				
 		 .and()
 				.formLogin().loginPage("/oauth_login").permitAll()

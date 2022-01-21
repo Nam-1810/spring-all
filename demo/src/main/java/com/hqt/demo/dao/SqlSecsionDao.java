@@ -36,8 +36,7 @@ public class SqlSecsionDao<T> implements Iservice<T> {
 
 	@Override
 	public T selectById(String queryId, int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne(queryId, id);
 	}
 
 }

@@ -9,7 +9,7 @@ import com.hqt.demo.dao.Iservice;
 import com.hqt.demo.dao.SysConfigDao;
 import com.hqt.demo.dao.SysMenuDao;
 import com.hqt.demo.entities.SysConfig;
-import com.hqt.demo.entities.sysMenuVO;
+import com.hqt.demo.entities.SysMenu;
 
 @Service
 public class SysConfigService implements IConfig {

@@ -14,7 +14,7 @@
 	<select id="selectById" resultMap="usrInfoResult" parameterType="int">
 		<![CDATA[
 			select * from usr_info
-			where usr_info.id = #{id}
+			where usr_info.ID = #{id}
 		]]>
 	</select>
 	<select id="selectByUserName" resultMap="usrInfoResult">
@@ -32,8 +32,10 @@
 	</insert>
 	<update id="update" parameterType="usrInfoVO">
 		UPDATE usr_info SET
-		USERNAME = #{USERNAME}
-		WHERE usr_info.id = #{id};
+		LAST_NAME = #{LAST_NAME},
+		FIRST_NAME = #{FIRST_NAME},
+		EMAIL = #{EMAIL}
+		WHERE usr_info.ID = #{ID};
 	</update>
 	<delete id="deleteById" parameterType="int">
 		DELETE from usr_info WHERE usr_info.id = #{id};

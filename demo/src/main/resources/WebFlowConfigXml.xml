@@ -8,8 +8,8 @@
            http://www.springframework.org/schema/webflow-config
            http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
 
-	<webflow:flow-registry id="flowRegistry" base-path="classpath:" flow-builder-services="flowBuilderServices">
-		<webflow:flow-location id="activationFlow" path="flows/start/demo-flow.xml" />
+	<webflow:flow-registry id="flowRegistry" base-path="classpath:flows" flow-builder-services="flowBuilderServices">
+	<webflow:flow-location-pattern value="/**/*-flow.xml" />
 	</webflow:flow-registry>
 
 	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />

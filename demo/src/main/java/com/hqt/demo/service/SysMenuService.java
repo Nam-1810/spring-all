@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hqt.demo.dao.SysMenuDao;
-import com.hqt.demo.entities.sysMenuVO;
+import com.hqt.demo.entities.SysMenu;
 
 @Service
 public class SysMenuService {
@@ -14,12 +14,12 @@ public class SysMenuService {
 	@Autowired
 	SysMenuDao sysMenuDao;
 
-	public List<sysMenuVO> selectMenuParent()
+	public List<SysMenu> selectMenuParent()
 	{
 		return sysMenuDao.selectMenuParent();
 	}
 	
-	public List<sysMenuVO> selectMenuChild(Integer id)
+	public List<SysMenu> selectMenuChild(Integer id)
 	{
 		return sysMenuDao.selectMenuChild(id);
 	}
